@@ -19,6 +19,14 @@ const titleClickHandler = function (event) {
         activeLink.classList.remove('active');
     }
 
+    /* [DONE] remove class 'active' from all articles */
+
+    const activeArticles = document.querySelectorAll('.posts .active');
+
+    for (let activeArticle of activeArticles) {
+        activeArticle.classList.remove('active');
+    }
+
     /* [IN PROGRESS] add class 'active' to the clicked link */
 
     clickedElement.classList.add('active');
@@ -33,7 +41,7 @@ const titleClickHandler = function (event) {
 
     /* find the correct article using the selector (value of 'href' attribute) */
 
-    const targetArticle = document.querySelector('href');
+    const targetArticle = document.querySelector(href);
 
     console.log(targetArticle);
 
