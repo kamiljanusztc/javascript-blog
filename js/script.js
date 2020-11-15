@@ -5,54 +5,104 @@ document.getElementById('test-button').addEventListener('click', function(){
   });
   */
 
-const titleClickHandler = function (event) {
-    event.preventDefault();
-    const clickedElement = this;
-    console.log('Link was clicked!');
-    console.log(event);
+{
+    const titleClickHandler = function (event) {
+        event.preventDefault();
+        const clickedElement = this;
+        console.log('Link was clicked!');
+        console.log(event);
 
-    /* [DONE] remove class 'active' from all article links  */
+        /* [DONE] remove class 'active' from all article links  */
 
-    const activeLinks = document.querySelectorAll('.titles a.active');
+        const activeLinks = document.querySelectorAll('.titles a.active');
 
-    for (let activeLink of activeLinks) {
-        activeLink.classList.remove('active');
+        for (let activeLink of activeLinks) {
+            activeLink.classList.remove('active');
+        }
+
+        /* [DONE] remove class 'active' from all articles */
+
+        const activeArticles = document.querySelectorAll('.posts .active');
+
+        for (let activeArticle of activeArticles) {
+            activeArticle.classList.remove('active');
+        }
+
+        /* [IN PROGRESS] add class 'active' to the clicked link */
+
+        clickedElement.classList.add('active');
+
+        console.log('clickedElement:', clickedElement);
+
+        /* get 'href' attribute from the clicked link */
+
+        const href = clickedElement.getAttribute('href');
+
+        console.log(href);
+
+        /* find the correct article using the selector (value of 'href' attribute) */
+
+        const targetArticle = document.querySelector(href);
+
+        console.log(targetArticle);
+
+        /* add class 'active' to the correct article */
+
+        targetArticle.classList.add('active');
+
     }
 
-    /* [DONE] remove class 'active' from all articles */
+    const links = document.querySelectorAll('.titles a');
 
-    const activeArticles = document.querySelectorAll('.posts .active');
-
-    for (let activeArticle of activeArticles) {
-        activeArticle.classList.remove('active');
+    for (let link of links) {
+        link.addEventListener('click', titleClickHandler);
     }
 
-    /* [IN PROGRESS] add class 'active' to the clicked link */
+    const optArticleSelector = '.post',
+        optTitleSelector = '.post-title',
+        optTitleListSelector = '.titles';
 
-    clickedElement.classList.add('active');
+    function generateTitleLinks() {
 
-    console.log('clickedElement:', clickedElement);
+        /* remove contents of titleList */
 
-    /* get 'href' attribute from the clicked link */
+        const titleList = document.querySelector(optTitleListSelector);
 
-    const href = clickedElement.getAttribute('href');
+        function clearMessages(){
+            document.getElementById('messages').innerHTML = optTitleListSelector;
+        }
 
-    console.log(href);
+        /* for each article */
 
-    /* find the correct article using the selector (value of 'href' attribute) */
+        const articles = document.querySelectorAll('.post');
+        
+        for (let post of posts) {
+            console.log(post);
+        }
 
-    const targetArticle = document.querySelector(href);
+            /* get the article id */
 
-    console.log(targetArticle);
+            const articleId = articles.getAttribute('id');
 
-    /* add class 'active' to the correct article */
+            /* find the title element */
 
-    targetArticle.classList.add('active');
+            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
-}
+            /* get the title from the title element */
 
-const links = document.querySelectorAll('.titles a');
+            /* create HTML of the link */
 
-for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
+            const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+
+            console.log(linkHTML);
+
+            /* insert link into titleList */
+
+            titleList.insertAdjacentHTML('afterend', 'innerHTML');
+
+            let html = 
+
+    }
+
+    generateTitleLinks();
 }
