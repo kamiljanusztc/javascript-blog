@@ -68,27 +68,28 @@ document.getElementById('test-button').addEventListener('click', function(){
 
         const titleList = document.querySelector(optTitleListSelector);
 
-        function clearMessages(){
-            document.getElementById('messages').innerHTML = optTitleListSelector;
+        function clearMessages() {
+            document.getElementById('messages').innerHTML = '.titles';
         }
 
         /* for each article */
 
         const articles = document.querySelectorAll('.post');
-        
-        for (let post of posts) {
-            console.log(post);
-        }
 
+        let html = '';
+
+        for (let article of articles) {
+            console.log(article);
+        
             /* get the article id */
 
-            const articleId = articles.getAttribute('id');
+            const articleId = clickedElement.getAttribute('id');
 
             /* find the title element */
 
-            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-
             /* get the title from the title element */
+
+            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
             /* create HTML of the link */
 
@@ -98,9 +99,11 @@ document.getElementById('test-button').addEventListener('click', function(){
 
             /* insert link into titleList */
 
-            titleList.insertAdjacentHTML('afterend', 'innerHTML');
+            html = html + linkHTML;
 
-            let html = 
+        }
+
+        titleList.innerHTML = html;
 
     }
 
