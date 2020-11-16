@@ -99,7 +99,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
             /* insert link into titleList */
 
-            html = html + linkHTML
+            html = html + linkHTML;
 
         }
 
