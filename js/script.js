@@ -52,12 +52,6 @@ document.getElementById('test-button').addEventListener('click', function(){
 
     }
 
-    const links = document.querySelectorAll('.titles a');
-
-    for (let link of links) {
-        link.addEventListener('click', titleClickHandler);
-    }
-
     const optArticleSelector = '.post',
         optTitleSelector = '.post-title',
         optTitleListSelector = '.titles';
@@ -67,14 +61,11 @@ document.getElementById('test-button').addEventListener('click', function(){
         /* remove contents of titleList */
 
         const titleList = document.querySelector(optTitleListSelector);
-
-        function clearMessages() {
-            document.getElementById('messages').innerHTML = '.titles';
-        }
+        titleList.innerHTML = ''; /* usuwamy caly html w tym elemencie */
 
         /* for each article */
 
-        const articles = document.querySelectorAll('.post');
+        const articles = document.querySelectorAll(optArticleSelector);
 
         let html = '';
 
@@ -83,7 +74,7 @@ document.getElementById('test-button').addEventListener('click', function(){
         
             /* get the article id */
 
-            const articleId = clickedElement.getAttribute('id');
+            const articleId = article.getAttribute('id');
 
             /* find the title element */
 
@@ -104,6 +95,12 @@ document.getElementById('test-button').addEventListener('click', function(){
         }
 
         titleList.innerHTML = html;
+
+        const links = document.querySelectorAll('.titles a');
+
+        for (let link of links) {
+            link.addEventListener('click', titleClickHandler);
+        }
 
     }
 
