@@ -71,7 +71,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
         for (let article of articles) {
             console.log(article);
-        
+
             /* get the article id */
 
             const articleId = article.getAttribute('id');
