@@ -57,7 +57,8 @@ document.getElementById('test-button').addEventListener('click', function(){
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list';
 
-  function generateTitleLinks() {
+    function generateTitleLinks(customSelector = '') {
+      console.log(customSelector);
 
     /* remove contents of titleList */
 
@@ -66,7 +67,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
     /* for each article */
 
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
     let html = '';
 
@@ -157,7 +158,7 @@ document.getElementById('test-button').addEventListener('click', function(){
       /* insert HTML of all the links into the tags wrapper */
 
       tagsWrapper.innerHTML = html;
-      console.log)(tagsWrapper);
+      console.log(tagsWrapper);
 
     /* END LOOP: for every article: */
     }
@@ -165,7 +166,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   generateTags();
 
-  function tagClickHandler(event){
+  function tagClickHandler(event) {
     /* prevent default action for this event */
 
     event.preventDefault();
@@ -185,28 +186,46 @@ document.getElementById('test-button').addEventListener('click', function(){
 
     /* find all tag links with class active */
 
-    'a[href="' + href + '"]';
+    const activeTagLinks = 'a[href="' + href + '"]';
 
     /* START LOOP: for each active tag link */
 
+    for(let activeTagLink of activeTagLinks) {
+    console.log(activeTagLink);
 
       /* remove class active */
 
+      activeTagLink.classList.remove('active');
+
     /* END LOOP: for each active tag link */
+    }
 
     /* find all tag links with "href" attribute equal to the "href" constant */
 
+    const equalTagLinks = document.querySelectorAll('a[href="' + href + '"]');
+
     /* START LOOP: for each found tag link */
+
+    for(equalTagLink of equalTagLinks) {
+    console.log(equalTagLink);
 
       /* add class active */
 
+      equalTagLink.classList.remove('active');
+
     /* END LOOP: for each found tag link */
+    }
 
     /* execute function "generateTitleLinks" with article selector as argument */
+
+    generateTitleLinks('[data-tags~="' + tag + '"]');
+
   }
 
   function addClickListenersToTags(){
     /* find all links to tags */
+
+
 
     /* START LOOP: for each link */
 
@@ -219,16 +238,3 @@ document.getElementById('test-button').addEventListener('click', function(){
 }
 
 
-
-/*
-const tagHTML = '<article class="post active" id="article-1" data-tags="art branding interior"></article>',
-'<article class="post active" id="article-2" data-tags="office exhibition trade fairs"></article>',
-'<article class="post active" id="article-3" data-tags="vinyl banner plate"></article>',
-'<article class="post active" id="article-4" data-tags="lightbox 3Dletters LED"></article>',
-'<article class="post active" id="article-5" data-tags="flyer business card poster"></article>',
-'<article class="post active" id="article-6" data-tags="mobile tablet desktop"></article>',
-'<article class="post active" id="article-7" data-tags="seo sem"></article>',
-'<article class="post active" id="article-8" data-tags="gadgets souvenirs gifts"></article>',
-'<article class="post active" id="article-9" data-tags="slack asana personio"></article>',
-'<article class="post active" id="article-10" data-tags="management leader team"></article>';
-*/
