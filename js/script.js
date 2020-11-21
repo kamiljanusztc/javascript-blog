@@ -55,7 +55,8 @@ document.getElementById('test-button').addEventListener('click', function(){
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list';
+    optArticleTagsSelector = '.post-tags .list',
+    optArticleAuthorsSelector = '.post-author';
 
     function generateTitleLinks(customSelector = '') {
       console.log(customSelector);
@@ -222,19 +223,67 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   }
 
-  function addClickListenersToTags(){
+  function addClickListenersToTags() {
+
     /* find all links to tags */
 
-
+    const tagLinks = document.querySelectorAll();
 
     /* START LOOP: for each link */
 
+    for(tagLink of tagLinks);
+    console.log(link);
+
       /* add tagClickHandler as event listener for that link */
+
+      tagLink.addEventListener('click', titleClickHandler);
 
     /* END LOOP: for each link */
   }
 
   addClickListenersToTags();
+
+  function generateAuthors() {
+
+    /* find all articles */
+
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log(articles);
+
+    /* START LOOP: for every article: */
+
+    for(let article of articles) {
+      console.log(article);
+
+      /* find authors wrapper */
+
+      const authorsWrapper = article.querySelector(optArticleAuthorsSelector);
+      console.log(authorsWrapper);
+
+      /* make html variable with empty string */
+
+      let html = '';
+
+      /* get tags from data-author attribute */
+
+      const articleAuthor= article.getAttribute('data-author');
+
+      /* generate HTML of the link */
+
+      const linkHTML = '<li><a href="#tag-author' + articleAuthor + '">' + articleAuthor + '</a></li>';
+      console.log(linkHTML);
+
+      /* insert HTML of all the links into the tags wrapper */
+
+      tagsWrapper.innerHTML = html;
+      console.log(tagsWrapper);
+
+    /* END LOOP: for every article: */
+    }
+  }
+
+  generateAuthors();
 }
+
 
 
