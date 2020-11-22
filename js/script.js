@@ -56,7 +56,8 @@ document.getElementById('test-button').addEventListener('click', function(){
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author';
+    optArticleAuthorSelector = '.post-author',
+    optTagsListSelector = '.tags.list';
 
     function generateTitleLinks(customSelector = '') {
       console.log(customSelector);
@@ -111,6 +112,9 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   function generateTags() {
 
+    /* [NEW] create a new variable allTags with an empty array */
+    let allTags = [];
+
     /* find all articles */
 
     const articles = document.querySelectorAll(optArticleSelector);
@@ -153,6 +157,15 @@ document.getElementById('test-button').addEventListener('click', function(){
 
         html = html + linkHTML;
 
+        /* [NEW] check if this link is NOT already in allTags */
+
+        if(allTags.indexOf(linkHTML) == -1){
+
+        /* [NEW] add generated code to allTags array */
+
+        allTags.push(linkHTML);
+        }
+
       /* END LOOP: for each tag */
       }
 
@@ -163,6 +176,15 @@ document.getElementById('test-button').addEventListener('click', function(){
 
     /* END LOOP: for every article: */
     }
+
+    /* [NEW] find list of tags in right column */
+
+    const tagList = document.querySelector('.tags');
+
+    /* [NEW] add html from allTags to tagList */
+
+    tagList.innerHTML = allTags.join(' ');
+
   }
 
   generateTags();
@@ -280,7 +302,7 @@ document.getElementById('test-button').addEventListener('click', function(){
       /* insert HTML of all the links into the author wrapper */
 
       authorWrapper.innerHTML = html;
-      console.log(tagsWrapper);
+      console.log(authorWrapper);
 
     /* END LOOP: for every article: */
     }
@@ -363,4 +385,13 @@ document.getElementById('test-button').addEventListener('click', function(){
   }
 
   addClickListenersToAuthors();
+
 }
+
+
+
+
+
+
+
+
