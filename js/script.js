@@ -56,7 +56,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorsSelector = '.post-author';
+    optArticleAuthorSelector = '.post-author';
 
     function generateTitleLinks(customSelector = '') {
       console.log(customSelector);
@@ -257,8 +257,8 @@ document.getElementById('test-button').addEventListener('click', function(){
 
       /* find authors wrapper */
 
-      const authorsWrapper = article.querySelector(optArticleAuthorsSelector);
-      console.log(authorsWrapper);
+      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+      console.log(authorWrapper);
 
       /* make html variable with empty string */
 
@@ -273,6 +273,10 @@ document.getElementById('test-button').addEventListener('click', function(){
       const linkHTML = '<li><a href="#tag-author' + articleAuthor + '">' + articleAuthor + '</a></li>';
       console.log(linkHTML);
 
+      /* add generated code to html variable */
+
+      html = html + linkHTML;
+
       /* insert HTML of all the links into the tags wrapper */
 
       tagsWrapper.innerHTML = html;
@@ -283,6 +287,26 @@ document.getElementById('test-button').addEventListener('click', function(){
   }
 
   generateAuthors();
+
+  function addClickListenersToAuthors() {
+
+    /* find all links to tags */
+
+    const tagLinks = document.querySelectorAll();
+
+    /* START LOOP: for each link */
+
+    for(tagLink of tagLinks);
+    console.log(link);
+
+      /* add tagClickHandler as event listener for that link */
+
+      tagLink.addEventListener('click', titleClickHandler);
+
+    /* END LOOP: for each link */
+  }
+
+  addClickListenersToAuthors();
 }
 
 
