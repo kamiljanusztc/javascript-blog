@@ -288,11 +288,11 @@ document.getElementById('test-button').addEventListener('click', function(){
 
       /* get tags from data-author attribute */
 
-      const articleAuthor= article.getAttribute('data-author');
+      const articleAuthor = article.getAttribute('data-author');
 
       /* generate HTML of the link */
 
-      const linkHTML = '<li><a href="#tag-author' + articleAuthor + '">' + articleAuthor + '</a></li>';
+      const linkHTML = '<li><a href="#' + articleAuthor + '">' + articleAuthor + '</a></li>';
       console.log(linkHTML);
 
       /* add generated code to html variable */
