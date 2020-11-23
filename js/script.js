@@ -5,7 +5,7 @@ document.getElementById('test-button').addEventListener('click', function(){
   });
   */
 
-{
+ {
   const titleClickHandler = function (event) {
     event.preventDefault();
     const clickedElement = this;
