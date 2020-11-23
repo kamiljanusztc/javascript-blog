@@ -182,7 +182,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     console.log(authorTagLink);
 
       /* remove class active */
-      activeTagLink.classList.remove('active');
+      authorTagLink.classList.remove('active');
 
     /* END LOOP: for each active tag link */
     }
@@ -287,11 +287,11 @@ document.getElementById('test-button').addEventListener('click', function(){
     }
 
     /* find all tag links with "href" attribute equal to the "href" constant */
-    const equalLinks = document.querySelectorAll('a[href="' + href + '"]');
+    const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
 
     /* START LOOP: for each found tag link */
     for(let authorLink of authorLinks) {
-    console.log(equalTagLink);
+    console.log(authorTagLink);
 
       /* add class active */
       authorLink.classList.add('active');
@@ -310,7 +310,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     const authorsLinks = document.querySelectorAll('[href="' + href + '"]');
 
     /* START LOOP: for each link */
-    for(let authorLink of authorLinks) {
+    for(let authorsLink of authorsLinks) {
     console.log(activeLink);
 
       /* add tagClickHandler as event listener for that link */
@@ -321,4 +321,4 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   addClickListenersToAuthors();
 
-}
+  }
