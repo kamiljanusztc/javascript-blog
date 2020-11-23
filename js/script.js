@@ -262,7 +262,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   generateAuthors();
 
-  authorClickHandler = function (event) {
+  const authorClickHandler = function (event) {
     /* prevent default action for this event */
     event.preventDefault();
 
