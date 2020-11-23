@@ -132,11 +132,12 @@ document.getElementById('test-button').addEventListener('click', function(){
         /* add generated code to html variable */
         html = html + linkHTML;
 
-        /* [NEW] check if this link is NOT already in allTags */
-        if(allTags.indexOf(linkHTML) == -1) {
-
-        /* [NEW] add generated code to allTags array */
-        allTags.push(linkHTML);
+        /* [NEW] check if this link is NOT already in allTags - !negacja - jesli allTags nie ma klucza tag*/
+        if(!allTags[tag]) {
+          /* [NEW] add tag to allTags object */
+          allTags[tag] = 1;
+        } else {
+          allTags[tag]++;  /* ++ operator inkrementacji - zwieksza liczke o 1 */
         }
 
       /* END LOOP: for each tag */
@@ -153,7 +154,8 @@ document.getElementById('test-button').addEventListener('click', function(){
     const tagList = document.querySelector('.tags');
 
     /* [NEW] add html from allTags to tagList */
-    tagList.innerHTML = allTags.join(' ');
+    //tagList.innerHTML = allTags.join(' ');
+    console.log(allTags);
 
   }
 
@@ -218,6 +220,7 @@ document.getElementById('test-button').addEventListener('click', function(){
       tagLink.addEventListener('click', tagClickHandler);
 
     /* END LOOP: for each link */
+    }
   }
 
   addClickListenersToTags();
