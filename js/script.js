@@ -274,7 +274,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     console.log(href);
 
     /* make a new constant "author" and extract tag from the "href" constant */
-    const author = href.replace('#', '');
+    const author = href.replace('#author-', '');
 
     /* find all author links with class active */
     const activeLinks = document.querySelectorAll('a[href="' + href + '"]');
@@ -303,14 +303,14 @@ document.getElementById('test-button').addEventListener('click', function(){
     }
 
     /* execute function "generateTitleLinks" with article selector as argument */
-    generateTitleLinks('[data-author="' + tag + '"]');
+    generateTitleLinks('[data-author="' + author + '"]');
 
   };
 
   const addClickListenersToAuthors = function () {
 
     /* find all links to tags */
-    const authorsLinks = document.querySelectorAll('a[href^="#-"]');
+    const authorsLinks = document.querySelectorAll('a[href^="#author-"]');
 
     /* START LOOP: for each link */
     for (let authorsLink of authorsLinks) {
@@ -324,6 +324,6 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   };
 
-    addClickListenersToAuthors();
+  addClickListenersToAuthors();
 
 }
