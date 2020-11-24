@@ -310,7 +310,7 @@ document.getElementById('test-button').addEventListener('click', function(){
   const addClickListenersToAuthors = function () {
 
     /* find all links to tags */
-    const authorsLinks = document.querySelectorAll('a[href^="#author-"]');
+    const authorsLinks = document.querySelectorAll('a[href^="#-"]');
 
     /* START LOOP: for each link */
     for (let authorsLink of authorsLinks) {
