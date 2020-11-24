@@ -246,7 +246,7 @@ document.getElementById('test-button').addEventListener('click', function(){
       const articleAuthor = article.getAttribute('data-author');
 
       /* generate HTML of the link */
-      const linkHTML = 'by<a href="#' + articleAuthor + '">' + articleAuthor + '</a>';
+      const linkHTML = 'by<a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a>';
       console.log(linkHTML);
 
       /* add generated code to html variable */
