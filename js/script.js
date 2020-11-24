@@ -41,7 +41,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     /* add class 'active' to the correct article */
     targetArticle.classList.add('active');
 
-  }
+  };
 
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
@@ -90,7 +90,7 @@ document.getElementById('test-button').addEventListener('click', function(){
       link.addEventListener('click', titleClickHandler);
     }
 
-  }
+  };
 
   generateTitleLinks();
 
@@ -157,7 +157,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     //tagList.innerHTML = allTags.join(' ');
     console.log(allTags);
 
-  }
+  };
 
   generateTags();
 
@@ -205,7 +205,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     /* execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-tags~="' + tag + '"]');
 
-  }
+  };
 
   const addClickListenersToTags = function () {
 
@@ -221,7 +221,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
       /* END LOOP: for each link */
     }
-  }
+  };
 
   addClickListenersToTags();
 
@@ -258,7 +258,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
       /* END LOOP: for every article: */
     }
-  }
+  };
 
   generateAuthors();
 
@@ -305,12 +305,12 @@ document.getElementById('test-button').addEventListener('click', function(){
     /* execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-author="' + tag + '"]');
 
-  }
+  };
 
   const addClickListenersToAuthors = function () {
 
     /* find all links to tags */
-    const authorsLinks = document.querySelectorAll('[href="' + href + '"]');
+    const authorsLinks = document.querySelectorAll('a[href^="#author-"]');
 
     /* START LOOP: for each link */
     for (let authorsLink of authorsLinks) {
@@ -322,7 +322,8 @@ document.getElementById('test-button').addEventListener('click', function(){
       /* END LOOP: for each link */
     }
 
+  };
+
     addClickListenersToAuthors();
 
-  }
 }
