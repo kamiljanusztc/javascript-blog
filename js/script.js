@@ -246,7 +246,7 @@ document.getElementById('test-button').addEventListener('click', function(){
       const articleAuthor = article.getAttribute('data-author');
 
       /* generate HTML of the link */
-      const linkHTML = 'by<a href="#' + articleAuthor + '">' + articleAuthor + '</a>';
+      const linkHTML = 'by<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
       console.log(linkHTML);
 
       /* add generated code to html variable */
@@ -310,7 +310,7 @@ document.getElementById('test-button').addEventListener('click', function(){
   const addClickListenersToAuthors = function () {
 
     /* find all links to tags */
-    const authorsLinks = document.querySelectorAll('a[href^="#"]');
+    const authorsLinks = document.querySelectorAll('a[href^="#author-"]');
 
     /* START LOOP: for each link */
     for (let authorsLink of authorsLinks) {
