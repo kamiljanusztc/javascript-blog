@@ -95,7 +95,16 @@ document.getElementById('test-button').addEventListener('click', function(){
   generateTitleLinks();
 
   const calculateTagsParmas = function(tags) {
-
+    const parmas = { max: 0, min: 999999};
+    for(let tag in tags) {
+      console.log(tag + ' is used ' + tags[tag] + ' times');
+      if(tags[tag] > parmas.max){
+        parmas.max = tags[tag];
+      } else if(tags[tag] < parmas.min) {
+        parmas.min = tags[tag];
+      }
+    }
+    return parmas;
   }
 
   const generateTags = function () {
