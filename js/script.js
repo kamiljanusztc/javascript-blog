@@ -48,7 +48,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.tags.list';
+    optTagsListSelector = '.tags.list'; //find tag list in right colum
 
   const generateTitleLinks = function (customSelector = '') {
     console.log(customSelector);
@@ -94,6 +94,10 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   generateTitleLinks();
 
+  const calculateTagsParmas = function(tags) {
+
+  }
+
   const generateTags = function () {
 
     /* [NEW] create a new variable allTags with an empty object */
@@ -137,7 +141,7 @@ document.getElementById('test-button').addEventListener('click', function(){
           /* [NEW] add tag to allTags object */
           allTags[tag] = 1;
         } else {
-          allTags[tag]++;  /* ++ operator inkrementacji - zwieksza liczke o 1 */
+          allTags[tag]++;  /* ++ operator inkrementacji - zwieksza liczbe o 1 */
         }
 
         /* END LOOP: for each tag */
@@ -153,9 +157,24 @@ document.getElementById('test-button').addEventListener('click', function(){
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector('.tags');
 
-    /* [NEW] add html from allTags to tagList */
-    //tagList.innerHTML = allTags.join(' ');
-    console.log(allTags);
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('tagsParams:', tagsParams);
+
+    /* [NEW] create variable for all links HTML code */
+    let allTagsHTML = '';
+
+    /* [NEW] START LOOP: for each tag in allTags: */
+    for(let tag in allTags) {
+
+    /* [NEW] generate code of a link and add it to allTagsHTML */
+    allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '</a></li>' + ' (' + allTags[tag] + ') ';
+    //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+
+    /* [NEW] END LOOP: for each tag in allTags: */
+    }
+
+    /*[NEW] add HTML from allTagsHTML to tagList */
+    tagList.innerHTML = allTagsHTML;
 
   };
 
