@@ -271,20 +271,6 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   addClickListenersToTags();
 
-  const calculateAuthorsParams = function(authors) {
-    const params = { max: 0, min: 999999};
-    for(let tag in tags) {
-      console.log(tag + ' is used ' + tags[tag] + ' times');
-      if(authors[author] > params.max){
-        params.max = tags[tag];
-      } else if(authors[author] < params.min) {
-        params.min = tags[tag];
-      }
-    }
-    return params;
-  };
-  console.log(calculateAuthorsParams);
-
   const generateAuthors = function () {
 
     /* [NEW] create a new variable allAuthors with an empty object */
@@ -321,11 +307,11 @@ document.getElementById('test-button').addEventListener('click', function(){
       console.log(authorWrapper);
 
       /* [NEW] check if this link is NOT already in allAuthors - !negacja - jesli allAuthors nie ma klucza tag*/
-      if (!allAuthors[author]) {
+      if (!allAuthors[articleAuthor]) {
         /* [NEW] add tag to allAuthors object */
-        allAuthors[author] = 1;
+        allAuthors[articleAuthor] = 1;
       } else {
-        allAuthors[author]++;  /* ++ operator inkrementacji - zwieksza liczbe o 1 */
+        allAuthors[articleAuthor]++;  /* ++ operator inkrementacji - zwieksza liczbe o 1 */
       }
 
       /* END LOOP: for every article: */
@@ -341,10 +327,10 @@ document.getElementById('test-button').addEventListener('click', function(){
     let allAuthorsHTML = '';
 
     /* [NEW] START LOOP: for each tag in allAuthors: */
-    for(let author in allAuthors) {
+    for(let articleAuthor in allAuthors) {
 
       /* [NEW] generate code of a link and add it to allAuthorsHTML */
-      const authorLinkHTML = '<a href="#author-' + articleAuthor + '" class="' + optCloudClassPrefix + calculateTagClass(allAuthors[author], authorsParams) + '">' + articleAuthor + '</a>';
+      const authorLinkHTML = '<a href="#author-' + articleAuthor + '" class="' + optCloudClassPrefix + calculateTagClass(allAuthors[articleAuthor], authorsParams) + '">' + articleAuthor + '</a>';
 
       console.log('authorLinkHTML:', authorLinkHTML);
 
