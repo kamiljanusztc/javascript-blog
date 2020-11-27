@@ -307,11 +307,11 @@ document.getElementById('test-button').addEventListener('click', function(){
       console.log(authorWrapper);
 
       /* [NEW] check if this link is NOT already in allAuthors - !negacja - jesli allAuthors nie ma klucza tag*/
-      if (!allAuthors[tag]) {
+      if (!allAuthors[author]) {
         /* [NEW] add tag to allAuthors object */
-        allAuthors[tag] = 1;
+        allAuthors[author] = 1;
       } else {
-        allAuthors[tag]++;  /* ++ operator inkrementacji - zwieksza liczbe o 1 */
+        allAuthors[author]++;  /* ++ operator inkrementacji - zwieksza liczbe o 1 */
       }
 
       /* END LOOP: for every article: */
@@ -320,29 +320,27 @@ document.getElementById('test-button').addEventListener('click', function(){
     /* [NEW] find list of authors in right column */
     const authorList = document.querySelector(optAuthorsListSelector);
 
-    const tagsParams = calculateTagsParams(allAuthors);
-    console.log('tagsParams:', tagsParams);
+    const authorsParams = calculateTagsParams(allAuthors);
+    console.log('authorsParams:', authorsParams);
 
     /* [NEW] create variable for all links HTML code */
     let allAuthorsHTML = '';
 
     /* [NEW] START LOOP: for each tag in allAuthors: */
-    for(let tag in allAuthors) {
+    for(let author in allAuthors) {
 
-      /* [NEW] generate code of a link and add it to allTagsHTML */
+      /* [NEW] generate code of a link and add it to allAuthorsHTML */
       const authorLinkHTML = '<a href="#author-' + articleAuthor + '" class="' + optCloudClassPrefix + calculateTagClass(allAuthors[tag], tagsParams) + '">' + articleAuthor + '</a>';
-      //const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
-      console.log('tagLinkHTML:', tagLinkHTML);
+
+      console.log('authorLinkHTML:', authorLinkHTML);
 
       allAuthorsHTML += authorLinkHTML;
-
-      //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
 
     /* [NEW] END LOOP: for each tag in allTags: */
     }
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    tagList.innerHTML = allTagsHTML;
+    authorList.innerHTML = allAuthorsHTML;
   };
 
   generateAuthors();
