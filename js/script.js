@@ -239,7 +239,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     const equalTagLinks = document.querySelectorAll('a[href="' + href + '"]');
 
     /* START LOOP: for each found tag link */
-    for (equalTagLink of equalTagLinks) {
+    for (let equalTagLink of equalTagLinks) {
       console.log(equalTagLink);
 
       /* add class active */
