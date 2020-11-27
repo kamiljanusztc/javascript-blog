@@ -48,7 +48,9 @@ document.getElementById('test-button').addEventListener('click', function(){
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.tags.list'; //find tag list in right colum
+    optTagsListSelector = '.tags.list', //find tag list in right colum
+    optCloudClassCount = '5',
+    optCloudClassPrefix = 'tag-size-';
 
   const generateTitleLinks = function (customSelector = '') {
     console.log(customSelector);
@@ -107,6 +109,9 @@ document.getElementById('test-button').addEventListener('click', function(){
     return params;
   }
   console.log(calculateTagsParams);
+
+  const calculateTagClass = function(count, params) {
+  }
 
   const generateTags = function () {
 
@@ -177,7 +182,11 @@ document.getElementById('test-button').addEventListener('click', function(){
     for(let tag in allTags) {
 
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '</a></li>' + ' (' + allTags[tag] + ') ';
+    const tagLinkHTML = '<li class="count, params"><a href="#tag-' + calculateTagClass(allTags[tag], tagsParams) + '</a></li>';
+    console.log('tagLinkHTML:', tagLinkHTML);
+
+    allTagsHTML += tagLinkHTML;
+
     //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
 
     /* [NEW] END LOOP: for each tag in allTags: */
