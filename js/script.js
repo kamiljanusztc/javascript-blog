@@ -271,6 +271,20 @@ document.getElementById('test-button').addEventListener('click', function(){
 
   addClickListenersToTags();
 
+  const calculateAuthorsParams = function(authors) {
+    const params = { max: 0, min: 999999};
+    for(let tag in tags) {
+      console.log(tag + ' is used ' + tags[tag] + ' times');
+      if(authors[author] > params.max){
+        params.max = tags[tag];
+      } else if(authors[author] < params.min) {
+        params.min = tags[tag];
+      }
+    }
+    return params;
+  };
+  console.log(calculateAuthorsParams);
+
   const generateAuthors = function () {
 
     /* [NEW] create a new variable allAuthors with an empty object */
@@ -330,7 +344,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     for(let author in allAuthors) {
 
       /* [NEW] generate code of a link and add it to allAuthorsHTML */
-      const authorLinkHTML = '<a href="#author-' + articleAuthor + '" class="' + optCloudClassPrefix + calculateTagClass(allAuthors[tag], tagsParams) + '">' + articleAuthor + '</a>';
+      const authorLinkHTML = '<a href="#author-' + articleAuthor + '" class="' + optCloudClassPrefix + calculateTagClass(allAuthors[author], authorsParams) + '">' + articleAuthor + '</a>';
 
       console.log('authorLinkHTML:', authorLinkHTML);
 
