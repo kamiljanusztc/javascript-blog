@@ -346,7 +346,7 @@ document.getElementById('test-button').addEventListener('click', function(){
 
     /* [NEW] create variable for all links HTML code */
     //let allAuthorsHTML = '';
-    const allTAuthorsData = {authors: []};
+    const allAuthorsData = {authors: []};
 
     /* [NEW] START LOOP: for each tag in allAuthors: */
     for(let articleAuthor in allAuthors) {
@@ -358,9 +358,8 @@ document.getElementById('test-button').addEventListener('click', function(){
 
       //allAuthorsHTML += authorLinkHTML;
       allAuthorsData.authors.push({
-        articleAuthor: articleAuthor,
-        count: allAuthor[articleAuthor],
-        className: calculateTagClass(allTags[articleAuthor], tagsParams)
+        author: articleAuthor,
+        count: allAuthors[articleAuthor],
       });
 
     /* [NEW] END LOOP: for each tag in allTags: */
