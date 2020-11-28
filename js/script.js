@@ -9,7 +9,8 @@ document.getElementById('test-button').addEventListener('click', function(){
   const templates = {
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
-    tagCloudLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML);
+    authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
   }
 
   const titleClickHandler = function (event) {
@@ -193,7 +194,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     console.log('tagsParams:', tagsParams);
 
     /* [NEW] create variable for all links HTML code */
-    //let allTagsHTML = '';
+    //let allTagsHTML = ''; // storing all links to tags
     const allTagsData = {tags: []};
 
     /* [NEW] START LOOP: for each tag in allTags: */
@@ -205,7 +206,12 @@ document.getElementById('test-button').addEventListener('click', function(){
       const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
       console.log('tagLinkHTML:', tagLinkHTML);
 
-      allTagsHTML += tagLinkHTML;
+      //allTagsHTML += tagLinkHTML;
+      allTagsData.tags.push({
+        tag: tag,
+        count: allTags[tag],
+        className: calculateTagClass(allTags[tag], tagsParams)
+      });
 
       //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
 
@@ -213,7 +219,9 @@ document.getElementById('test-button').addEventListener('click', function(){
     }
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    tagList.innerHTML = allTagsHTML;
+    //tagList.innerHTML = allTagsHTML;
+    tagList.innerHTML = templates.tagCloudLink(allTagsData);
+    console.log(allTagsData);
 
   };
 
