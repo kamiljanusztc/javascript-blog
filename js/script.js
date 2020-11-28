@@ -126,7 +126,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     const normalizedMax = params.max - params.min; // reduce (2 less)
     const percentage = normalizedCount / normalizedMax; // divide both numbers
     const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 ); //algorithm
-    return optCloudClassPrefix, classNumber;
+    return optCloudClassPrefix + classNumber;
   };
 
   const generateTags = function () {
@@ -200,10 +200,6 @@ document.getElementById('test-button').addEventListener('click', function(){
 
     /* [NEW] START LOOP: for each tag in allTags: */
     for(let tag in allTags) {
-
-      /* [NEW] generate code of a link and add it to allTagsHTML */
-      const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
-      console.log('tagLinkHTML:', tagLinkHTML);
 
       //allTagsHTML += tagLinkHTML;
       allTagsData.tags.push({
@@ -350,11 +346,6 @@ document.getElementById('test-button').addEventListener('click', function(){
 
     /* [NEW] START LOOP: for each tag in allAuthors: */
     for(let articleAuthor in allAuthors) {
-
-      /* [NEW] generate code of a link and add it to allAuthorsHTML */
-      const authorLinkHTML = '<a href="#author-' + articleAuthor + '" class="' + optCloudClassPrefix + calculateTagClass(allAuthors[articleAuthor], authorsParams) + '">' + articleAuthor + '</a>';
-
-      console.log('authorLinkHTML:', authorLinkHTML);
 
       //allAuthorsHTML += authorLinkHTML;
       allAuthorsData.authors.push({
