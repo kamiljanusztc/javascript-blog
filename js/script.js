@@ -10,7 +10,8 @@ document.getElementById('test-button').addEventListener('click', function(){
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
     authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
-    tagCloudLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+    authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML)
   }
 
   const titleClickHandler = function (event) {
@@ -194,15 +195,13 @@ document.getElementById('test-button').addEventListener('click', function(){
     console.log('tagsParams:', tagsParams);
 
     /* [NEW] create variable for all links HTML code */
-    //let allTagsHTML = ''; // storing all links to tags
+    //let allTagsHTML = ''; // storing html of all links to tags
     const allTagsData = {tags: []};
 
     /* [NEW] START LOOP: for each tag in allTags: */
     for(let tag in allTags) {
 
       /* [NEW] generate code of a link and add it to allTagsHTML */
-      //const linkHTMLData = {id: tag, title: tag};
-      //const linkHTML = templates.tagCloudLink(linkHTMLData);
       const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + optCloudClassPrefix + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
       console.log('tagLinkHTML:', tagLinkHTML);
 
@@ -346,7 +345,8 @@ document.getElementById('test-button').addEventListener('click', function(){
     console.log('authorsParams:', authorsParams);
 
     /* [NEW] create variable for all links HTML code */
-    let allAuthorsHTML = '';
+    //let allAuthorsHTML = '';
+    const allTAuthorsData = {authors: []};
 
     /* [NEW] START LOOP: for each tag in allAuthors: */
     for(let articleAuthor in allAuthors) {
@@ -356,13 +356,19 @@ document.getElementById('test-button').addEventListener('click', function(){
 
       console.log('authorLinkHTML:', authorLinkHTML);
 
-      allAuthorsHTML += authorLinkHTML;
+      //allAuthorsHTML += authorLinkHTML;
+      allAuthorsData.authors.push({
+        articleAuthor: articleAuthor,
+        count: allAuthor[articleAuthor],
+        className: calculateTagClass(allTags[articleAuthor], tagsParams)
+      });
 
     /* [NEW] END LOOP: for each tag in allTags: */
     }
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    authorList.innerHTML = allAuthorsHTML;
+    //authorList.innerHTML = allAuthorsHTML;
+    authorList.innerHTML = templates.authorCloudLink(allAuthorsData);
   };
 
   generateAuthors();
